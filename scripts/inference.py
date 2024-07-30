@@ -60,7 +60,7 @@ def main():
     else:
         coordinator = None
         enable_sequence_parallelism = False
-    set_random_seed(seed=cfg.get("seed", 1024))
+    # set_random_seed(seed=cfg.get("seed", 1024))
 
     # == init logger ==
     logger = create_logger()
@@ -117,6 +117,7 @@ def main():
     if prompts is None:
         if cfg.get("prompt_path", None) is not None:
             prompts = load_prompts(cfg.prompt_path, start_idx, cfg.get("end_index", None))
+            prompts = prompts * 50
         else:
             prompts = [cfg.get("prompt_generator", "")] * 1_000_000  # endless loop
 
@@ -260,7 +261,7 @@ def main():
                     )
 
                 # == sampling ==
-                torch.manual_seed(1024)
+                # torch.manual_seed(1024)
                 z = torch.randn(len(batch_prompts), vae.out_channels, *latent_size, device=device, dtype=dtype)
                 masks = apply_mask_strategy(z, refs, ms, loop_i, align=align)
                 samples = scheduler.sample(
