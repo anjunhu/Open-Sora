@@ -4,11 +4,13 @@
 # The training config locates in stage1.py.
 resolution = "360p" # training resolution: 240p and 360p 
 aspect_ratio = "9:16"
-num_frames = "8s"
+num_frames = "4s"
 fps = 24
 frame_interval = 1
 save_fps = 24
 
+# seed = 42
+batch_size = 1
 multi_resolution = "STDiT2"
 dtype = "bf16"
 condition_frame_length = 5
@@ -43,10 +45,10 @@ aes = 6.5
 flow = None
 
 # Condition
-prompt_path = "./assets/webvid10m/duplicates.txt"
+prompt_path = "./assets/one-step-attack/sdv1_bb_edge_mv.txt"
 prompt = None  # prompt has higher priority than prompt_path
 
 # Others
-batch_size = 2
-seed = 222
-save_dir = "./samples/webvid10m-duplicates/"
+batch_size = 8
+# seed = 42
+save_dir = "./samples/one-step-attack/sdv1_bb_edge_mv/"

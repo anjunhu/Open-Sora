@@ -9,9 +9,6 @@ fps = 24
 frame_interval = 1
 save_fps = 24
 
-save_dir = "./samples/samples/"
-# seed = 42
-batch_size = 1
 multi_resolution = "STDiT2"
 dtype = "bf16"
 condition_frame_length = 5

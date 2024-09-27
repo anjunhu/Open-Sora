@@ -1,6 +1,7 @@
 import os
 import time
 from pprint import pformat
+from datetime import datetime
 
 import colossalai
 import torch
@@ -138,7 +139,8 @@ def main():
     condition_frame_edit = cfg.get("condition_frame_edit", 0.0)
     align = cfg.get("align", None)
 
-    save_dir = cfg.save_dir
+    now = datetime.now()
+    save_dir = cfg.save_dir + '@' + now.strftime("%Y%m%d%H%M")
     os.makedirs(save_dir, exist_ok=True)
     sample_name = cfg.get("sample_name", None)
     prompt_as_path = cfg.get("prompt_as_path", False)
